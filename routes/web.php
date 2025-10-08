@@ -28,6 +28,8 @@ use App\Http\Controllers\InfoController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\GuardianController;
 use App\Http\Controllers\ClassroomController;
+use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\SubjectController;
 
 
 
@@ -48,4 +50,9 @@ Route::get('/kontak', [KontakController::class, 'kontak'])->name('kontak');
 Route::get('/student', [StudentController::class, 'index'])->name('student');
 
 Route::get('/guardian', [GuardianController::class, 'index'])->name('guardian');
+
 Route::get('/classroom', [ClassroomController::class, 'index'])->name('classroom');
+
+Route::get('/teacher', [TeacherController::class, 'index'])->name('teacher');
+
+Route::get('/subject', [SubjectController::class, 'index'])->name('subject');
