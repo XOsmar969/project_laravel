@@ -8,6 +8,7 @@
                     <th class="border border-gray-600 px-4 py-2">id</th>
                     <th class="border border-gray-600 px-4 py-2">Name</th>
                     <th class="border border-gray-600 px-4 py-2">Description</th>
+                
                 </tr>
             </thead>
             <tbody>
@@ -15,14 +16,8 @@
                 <tr>
                     <td class="border border-gray-600 px-4 py-2">{{ $subject->id }}</td>
                     <td class="border border-gray-600 px-4 py-2">{{ $subject->name }}</td>
-                    <td class="border border-gray-600 px-4 py-2">{{ $subject->description }}</td>
-                    
-
-                            @foreach ($subject->teachers as $teacher)
-                                <li>{{ $teacher->name }}</li>
-                            @endforeach
-                        
-                    </td>
+                    <td class="border border-gray-600 px-4 py-2">{{ $subject->description }}</td>    
+               
                 </tr>
                 @endforeach
             </tbody>
