@@ -56,3 +56,13 @@ Route::get('/classroom', [ClassroomController::class, 'index'])->name('classroom
 Route::get('/teacher', [TeacherController::class, 'index'])->name('teacher');
 
 Route::get('/subject', [SubjectController::class, 'index'])->name('subject');
+
+Route::prefix('admin')->group(function () {
+    Route::get('/dashboard', function () {
+        return view('admin.dashboard');
+    });
+
+    Route::get('/students', [StudentController::class, 'index'])->name('admin.students');
+    Route::get('/subject', [SubjectController::class, 'index'])->name('admin.subject');
+    Route::get('/info', [InfoController::class, 'index'])->name('admin.info');
+});

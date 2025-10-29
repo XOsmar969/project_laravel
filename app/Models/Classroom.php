@@ -12,6 +12,7 @@ class Classroom extends Model
 
     protected $fillable = ['name'];
     protected $table = 'classrooms';
+    
 
     public function students()
     {
