@@ -1,7 +1,8 @@
 <x-admin.layout>
     <div x-data="{ openDeleteModal: false, deleteUrl: '' }">
     <x-slot:judul>{{ $title }}</x-slot:judul>
-    <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">
+      <h1 class="text-xl font-bold mb-4">Data Guardians</h1>
+    <section class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden" ">
         <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
 
             <!-- Start coding here -->
@@ -63,12 +64,12 @@
                                     </button>
                                     <div id="{{ $dropdownId }}" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
                                         <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="{{ $buttonId }}">
-                                            <li>
-                                                <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Show</a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Edit</a>
-                                            </li>
+                                           <li>
+                                           <a href="{{ route('admin.students.edit', $student->id) }}"
+                                             class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                             Edit
+                                             </a>
+                                           </li>
                                         </ul>
                                         <div class="py-1">
                                             <button

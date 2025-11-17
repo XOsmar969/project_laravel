@@ -3,7 +3,7 @@
     <div class="p-6 bg-white rounded-lg shadow">
         <h2 class="text-xl font-bold mb-4">Edit Student</h2>
 
-        <form action="{{ route('students.update', $student->id) }}" method="POST">
+        <form action="{{ route('admin.students.update', $student->id) }}" method="POST">
             @csrf
             @method('PUT')
 

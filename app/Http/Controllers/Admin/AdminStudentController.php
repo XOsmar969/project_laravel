@@ -62,7 +62,9 @@ class AdminStudentController extends Controller
      */
     public function edit(string $id)
     {
-        //
+          $student = Student::findOrFail($id);
+
+    return view('admin.student.edit', compact('student'));
     }
 
     /**
@@ -70,7 +72,16 @@ class AdminStudentController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+            $student = Student::findOrFail($id);
+
+    $validated = $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|email|unique:students,email,' . $id,
+    ]);
+
+    $student->update($validated);
+
+    return redirect()->route('admin.students.index')->with('success', 'Data berhasil diupdate !');
     }
 
     /**

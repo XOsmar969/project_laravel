@@ -45,6 +45,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/student', [AdminStudentController::class, 'index'])->name('students.index');
     Route::post('/student', [AdminStudentController::class, 'store'])->name('students.store');
     Route::delete('/student/{student}', [AdminStudentController::class, 'destroy'])->name('students.destroy');
+    Route::get('/student/{student}/edit', [AdminStudentController::class, 'edit'])->name('students.edit');
+    Route::put('/student/{student}', [AdminStudentController::class, 'update'])->name('students.update');
 
     // Guardian
     Route::get('/guardian', [AdminGuardianController::class, 'index'])->name('guardian.index');
