@@ -1,27 +1,62 @@
-<!DOCTYPE html>
-<html lang="en">
+<x-admin.layout>
+    <x-slot:judul>{{ $title ?? 'Dashboard Admin' }}</x-slot:judul>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <!-- Header -->
+    <div class="flex justify-between items-center mb-8">
+        <h1 class="text-3xl font-bold text-black-800 dark:text-black-100">Dashboard Admin</h1>
+        <p class="text-sm text-gray-500 dark:text-gray-400">
+            {{ now()->format('l, d F Y') }}
+        </p>
+    </div>
 
-</head>
-
-<body>
-    @extends('admin.components.layout')
-
-    @section('content')
-        <main>
-
-
-            <div class="antialiased bg-gray-50 dark:bg-gray-900">
-                <h1 class="text-2xl font-semibold text-gray-900 dark:text-white">Dashboard Admin</h1>
+    <!-- Statistik Cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+        <div class="bg-white dark:bg-gray-800 shadow rounded-xl p-5 border border-gray-100 dark:border-gray-700">
+            <div class="flex items-center">
+                <div class="p-3 bg-blue-100 text-blue-600 rounded-lg">
+                    <i class="fa-solid fa-user-graduate text-xl"></i>
+                </div>
+                <div class="ml-4">
+                    <h2 class="text-lg font-semibold text-gray-700 dark:text-gray-200">Students</h2>
+                    <p class="text-2xl font-bold text-gray-900 dark:text-white">20</p>
+                </div>
             </div>
-        </main>
-    @endsection
-</body>
+        </div>
 
-</html>
+        <div class="bg-white dark:bg-gray-800 shadow rounded-xl p-5 border border-gray-100 dark:border-gray-700">
+            <div class="flex items-center">
+                <div class="p-3 bg-green-100 text-green-600 rounded-lg">
+                    <i class="fa-solid fa-chalkboard-teacher text-xl"></i>
+                </div>
+                <div class="ml-4">
+                    <h2 class="text-lg font-semibold text-gray-700 dark:text-gray-200">Teachers</h2>
+                    <p class="text-2xl font-bold text-gray-900 dark:text-white">12</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 shadow rounded-xl p-5 border border-gray-100 dark:border-gray-700">
+            <div class="flex items-center">
+                <div class="p-3 bg-yellow-100 text-yellow-600 rounded-lg">
+                    <i class="fa-solid fa-school text-xl"></i>
+                </div>
+                <div class="ml-4">
+                    <h2 class="text-lg font-semibold text-gray-700 dark:text-gray-200">Classrooms</h2>
+                    <p class="text-2xl font-bold text-gray-900 dark:text-white">4</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 shadow rounded-xl p-5 border border-gray-100 dark:border-gray-700">
+            <div class="flex items-center">
+                <div class="p-3 bg-purple-100 text-purple-600 rounded-lg">
+                    <i class="fa-solid fa-book text-xl"></i>
+                </div>
+                <div class="ml-4">
+                    <h2 class="text-lg font-semibold text-gray-700 dark:text-gray-200">Subjects</h2>
+                    <p class="text-2xl font-bold text-gray-900 dark:text-white">10</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</x-admin.layout>

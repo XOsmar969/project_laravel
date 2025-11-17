@@ -16,11 +16,14 @@ class GuardianFactory extends Factory
      */
     public function definition(): array
     {
-        return [
-            'name'  => $this->faker->name(),
-            'job'   => $this->faker->jobTitle(),
-            'phone' => $this->faker->phoneNumber(),
-            'email' => $this->faker->unique()->safeEmail(),
+return [
+            'name' => fake()->name(),
+            'job' => fake()->randomElement([
+                'Guru', 'Dokter', 'Programmer', 'Petani', 'Perawat',
+                'Animator', 'Pemandu Wisata', 'Desainer Grafis', 'Pelukis', 'Chef'
+        ]),
+            'email' => fake()->unique()->safeEmail(),
+            'address' => fake()->address(),
         ];
     }
 }

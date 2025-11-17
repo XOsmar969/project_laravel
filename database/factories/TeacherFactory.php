@@ -10,14 +10,20 @@ use App\Models\Subject;
  */
 class TeacherFactory extends Factory
 {
+    /**
+     * Define the model's default state.
+     *
+     * @return array<string, mixed>
+     */
     public function definition(): array
     {
-        return [
-            'name' => $this->faker->name(),
-            'subject_id' => Subject::inRandomOrder()->first()->id ?? Subject::factory(),
-            'phone' => $this->faker->phoneNumber(),
-            'email' => $this->faker->unique()->safeEmail(),
-            'address' => $this->faker->address(),
+return [
+            'name' => fake()->name(),
+            'subject_id' => Subject::factory(), 
+            'email' => fake()->unique()->safeEmail(),
+            'phone' => fake()->phoneNumber(),
+            'address' => fake()->address(),
+            
         ];
     }
 }

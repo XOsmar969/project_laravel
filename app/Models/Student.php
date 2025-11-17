@@ -12,6 +12,15 @@ class Student extends Model
 
     protected $with = ['classroom'];
 
+        protected $fillable = [
+        'name',
+        'email',
+        'address',
+        'classroom_id',
+    ];
+
+   
+
     public function classroom()
     {
         return $this->belongsTo(Classroom::class, 'classroom_id');

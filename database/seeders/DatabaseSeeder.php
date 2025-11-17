@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
         ]); 
         
         Guardian::factory(10)->create();
-        Classroom::factory(4)->hasStudents(5)->create();
+        Classroom::factory(4)->hasStudents(10)->create();
         Subject::factory(5)->hasTeachers(1)->create();
 
       

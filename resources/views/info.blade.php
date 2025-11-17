@@ -16,7 +16,13 @@
 </body>
 </html> -->
 <x-layout>
-    <x-slot:judul>{{ $title}}</x-slot:judul>
+
+@section('content')
+    <div class="mb-6">
+        <h1 class="text-2xl font-semibold text-gray-900 dark:text-white">Info</h1>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Info yang terdaftar</p>
+    </div>
     <h1 class="text-2xl font-bold text-white">Selamat Datang di Website Saya</h1>
     <p class="text-white">Ini adalah halaman beranda pertama menggunakan Blade.</p>
+@endsection
 </x-layout>

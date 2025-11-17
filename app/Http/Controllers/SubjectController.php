@@ -1,18 +1,24 @@
 <?php
-
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Subject;
+use Illuminate\Http\Request;
 
-
-class SubjectController extends Controller{
-public function index()
+class SubjectController extends Controller
+{
+    public function index()
     {
-        $subjects = Subject::all();
         return view('subject', [
             'title' => 'Subject',
-            "subjects" => $subjects
+            'subject' => Subject::all()
+        ]);
+    }
+
+    public function adminIndex()
+    {
+        return view('admin.subject.index', [
+            'title' => 'Data mata pelajaran (Admin)',
+            'subjects' => Subject::all()
         ]);
     }
 }
