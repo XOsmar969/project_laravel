@@ -11,7 +11,7 @@ class AdminClassroomController extends Controller
     // Halaman daftar classroom
     public function index()
     {
-        $classrooms = Classroom::all();
+        $classrooms = Classroom::with('students')->get();
 
         return view('admin.classroom.index', [
             'title' => 'Data Classroom',

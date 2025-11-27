@@ -26,11 +26,13 @@ class AdminSubjectController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|min:3|max:255'
+            'name' => 'required|min:3|max:255',
+              'description' => 'nullable|string',
         ]);
 
         Subject::create([
             'name' => $request->name
+            ,'description' => $request->description
         ]);
 
         return redirect('/admin/subject')->with('success', 'Subject berhasil ditambahkan!');

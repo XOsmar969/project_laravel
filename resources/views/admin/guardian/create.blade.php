@@ -1,70 +1,47 @@
-<x-admin.layout>
+
     <x-slot:judul>{{ $title }}</x-slot:judul>
 
+    <div class="max-w-3xl mx-auto bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+       
 
-<div class="container mt-4">
+        <form action="{{ route('admin.guardian.store') }}" method="POST" class="space-y-5">
+            @csrf
 
-    <h3>{{ $title }}</h3>
+            <div>
+                <label class="text-gray-900 dark:text-white">Nama</label>
+                <input type="text" name="name"
+                    class="w-full rounded-lg border-gray-300 dark:bg-white-700 dark:border-gray-600" required>
+            </div>
 
-    <div class="card mt-3">
-        <div class="card-body">
+            <div>
+                <label class="text-gray-900 dark:text-white">Pekerjaan</label>
+                <input type="text" name="job"
+                    class="w-full rounded-lg border-gray-300 dark:bg-white-700 dark:border-gray-600" required>
+            </div>
 
-            <form action="/admin/guardian" method="POST">
-                @csrf
+            <div>
+                <label class="text-gray-900 dark:text-white">Email</label>
+                <input type="email" name="email"
+                    class="w-full rounded-lg border-gray-300 dark:bg-white-700 dark:border-gray-600" required>
+            </div>
 
-                {{-- Nama --}}
-                <div class="mb-3">
-                    <label class="form-label">Nama Wali</label>
-                    <input type="text" name="name" 
-                           class="form-control @error('name') is-invalid @enderror"
-                           value="{{ old('name') }}">
+            <div>
+                <label class="text-gray-900 dark:text-white">Alamat</label>
+                <textarea name="address" rows="3"
+                    class="w-full rounded-lg border-gray-300 dark:bg-white-700 dark:border-gray-600" required></textarea>
+            </div>
 
-                    @error('name')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </div>
+            <div class="flex justify-between mt-6">
+                <a href="{{ route('admin.guardian.index') }}"
+                   class="px-4 py-2 bg-gray-500 hover:bg-gray-600 text-white rounded-lg">
+                    Kembali
+                </a>
 
-                {{-- Pekerjaan --}}
-                <div class="mb-3">
-                    <label class="form-label">Pekerjaan</label>
-                    <input type="text" name="job" 
-                           class="form-control @error('job') is-invalid @enderror"
-                           value="{{ old('job') }}">
-
-                    @error('job')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </div>
-
-                {{-- Email --}}
-                <div class="mb-3">
-                    <label class="form-label">Email</label>
-                    <input type="email" name="email" 
-                           class="form-control @error('email') is-invalid @enderror"
-                           value="{{ old('email') }}">
-
-                    @error('email')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </div>
-
-                {{-- Alamat --}}
-                <div class="mb-3">
-                    <label class="form-label">Alamat</label>
-                    <textarea name="address" rows="3"
-                              class="form-control @error('address') is-invalid @enderror">{{ old('address') }}</textarea>
-
-                    @error('address')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </textarea>
-                </div>
-
-                <button type="submit" class="btn btn-primary">Simpan</button>
-                <a href="/admin/guardian" class="btn btn-secondary">Kembali</a>
-            </form>
-
-        </div>
+                <button type="submit"
+                    class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg">
+                    Simpan
+                </button>
+            </div>
+        </form>
     </div>
-</div>
-</x-admin.layout>
+

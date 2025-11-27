@@ -29,7 +29,10 @@ class AdminStudentController extends Controller
      */
     public function create()
     {
-        //
+          return view('admin.student.create', [
+        'title' => 'Tambah Student',
+        'classrooms' => Classroom::all()
+    ]);
     }
 
     /**

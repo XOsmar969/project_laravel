@@ -18,12 +18,10 @@ class ClassroomController extends Controller
 }
 
 
-    // Untuk admin — CRUD classroom
     public function adminIndex()
     {
         $classrooms = Classroom::all();
-
-        // Pastikan view ini ada di: resources/views/admin/classroom/index.blade.php
+        
         return view('admin.classroom.index', [ 
             'title' => 'Data Classroom (Admin)',
             'classrooms' => $classrooms

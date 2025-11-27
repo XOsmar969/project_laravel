@@ -12,13 +12,7 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        // $student = [
-        //     ['id' => 1,'name' => 'Aldestha Nendrayanto', 'email' => 'nendra@gmail.com', 'address' => 'Gribig', 'kelas' => '11 PPLG 1'],
-        //     ['id' => 2,'name' => 'Aldikky Arfian Susanto', 'email' => 'dikky@gmail.com', 'address' => 'Kudus', 'kelas' => '11 PPLG 1'],
-        //     ['id' => 3,'name' => 'Alfian Fadhil Pradana', 'email' => 'fadhil@example.com', 'address' => 'Kudus', 'kelas' => '11 PPLG 1'],
-        //     ['id' => 4,'name' => 'Almira Natahania', 'email' => 'mira@gmail.com', 'address' => 'Kudus', 'kelas' => '11 PPLG 1'],
-        //     ['id' => 5,'name' => 'Arza Armandhito', 'email' => 'arza@gmail.com', 'address' => 'Kudus', 'kelas' => '11 PPLG 1'],
-        // ];
+     
 
         $teacher = Teacher::all();
         return view('teacher', ['title' => 'Teacher', 'teacher' => $teacher]);

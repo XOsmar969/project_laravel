@@ -15,8 +15,7 @@
 
 <x-layout>
     <x-slot:judul>{{ $title}}</x-slot:judul>
-    <h1   class="text-2xl font-bold text-white">Profil Saya</h1>
-    <p class="text-white">Nama: {{ $nama }}</p>
-    <p  class="text-white">Kelas: {{ $kelas }}</p>
-    <p  class="text-white">Sekolah: {{ $sekolah }}</p>
+    <p class="text-gray">Nama: {{ $nama }}</p>
+    <p  class="text-gray">Kelas: {{ $kelas }}</p>
+    <p  class="text-gray">Sekolah: {{ $sekolah }}</p>
 </x-layout>

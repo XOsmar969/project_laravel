@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProfilController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KontakController;
 use App\Http\Controllers\InfoController;
@@ -20,9 +20,9 @@ use App\Http\Controllers\Admin\AdminSubjectController;
 // =====================
 // RUTE UTAMA WEBSITE
 // =====================
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/info', [InfoController::class, 'info'])->name('info');
-Route::get('/profil', [ProfilController::class, 'profil'])->name('profil');
+Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');
 Route::get('/kontak', [KontakController::class, 'kontak'])->name('kontak');
 
 Route::get('/student', [StudentController::class, 'index'])->name('student');
@@ -41,7 +41,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         return view('admin.dashboard', ['title' => 'Dashboard Admin']);
     })->name('dashboard');
 
-    // CRUD Student
+    // Student
     Route::get('/student', [AdminStudentController::class, 'index'])->name('students.index');
     Route::post('/student', [AdminStudentController::class, 'store'])->name('students.store');
     Route::delete('/student/{student}', [AdminStudentController::class, 'destroy'])->name('students.destroy');
@@ -49,12 +49,22 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::put('/student/{student}', [AdminStudentController::class, 'update'])->name('students.update');
 
     // Guardian
-    Route::get('/guardian', [AdminGuardianController::class, 'index'])->name('guardian.index');
-    Route::post('/guardian', [AdminGuardianController::class, 'store'])->name('guardian.store');
+// Guardian
+Route::get('/guardian', [AdminGuardianController::class, 'index'])->name('guardian.index');
+Route::post('/guardian', [AdminGuardianController::class, 'store'])->name('guardian.store');
+Route::get('/guardian/create', [AdminGuardianController::class, 'create'])->name('guardian.create');
+Route::get('/guardian/{id}/edit', [AdminGuardianController::class, 'edit'])->name('guardian.edit');
+Route::put('/guardian/{id}', [AdminGuardianController::class, 'update'])->name('guardian.update');
+Route::delete('/guardian/{id}', [AdminGuardianController::class, 'destroy'])->name('guardian.destroy');
+
 
     // Teacher
     Route::get('/teacher', [AdminTeacherController::class, 'index'])->name('teacher.index');
     Route::post('/teacher', [AdminTeacherController::class, 'store'])->name('teacher.store');
+    Route::get('/teacher/create', [AdminTeacherController::class, 'create'])->name('teacher.create');
+    Route::get('/teacher/{id}/edit', [AdminTeacherController::class, 'edit'])->name('teacher.edit');
+    Route::put('/teacher/{id}', [AdminTeacherController::class, 'update'])->name('teacher.update');
+    Route::delete('/teacher/{id}', [AdminTeacherController::class, 'destroy'])->name('teacher.destroy');
 
     // Subject
     Route::get('/subject', [AdminSubjectController::class, 'index'])->name('subject.index');

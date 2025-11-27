@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 
-class ProfilController extends Controller
+class ProfileController extends Controller
 {
    
-     public function profil()
+     public function profile()
 {
     $data = [
         'title' => 'Profile',
@@ -17,7 +17,7 @@ class ProfilController extends Controller
         'sekolah' => 'SMK RUS'
     ];
 
-    return view('profil', $data);
+    return view('profile', $data);
 }
 
    

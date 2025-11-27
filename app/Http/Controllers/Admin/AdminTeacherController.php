@@ -3,51 +3,84 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use App\Models\Teacher;
 use App\Models\Subject;
-use Illuminate\Http\Request;
 
 class AdminTeacherController extends Controller
 {
     public function index()
     {
-        $teachers = Teacher::with('subject')->get();
+        $teachers = Teacher::all();
+        $subjects = Subject::all();
 
-        return view('components.admin.teacher', [
-            'title' => 'Teacher List',
-            'teacher' => $teachers
+        return view('admin.teacher.index', [
+            'title' => 'Data Teacher',
+            'teachers' => $teachers,
+            'subjects' => $subjects
+        ]);
+    }
+
+    public function create()
+    {
+        $subjects = Subject::all();
+        return view('admin.teacher.create', [
+            'title' => 'Tambah Teacher',
+            'subjects' => $subjects
+            
         ]);
     }
 
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'subject_name' => 'required',
-            'subject_description' => 'nullable',
-            'email' => 'required|email',
-            'phone' => 'required',
-            'address' => 'required',
+        $validated = $request->validate([
+            'name'    => 'required|string|max:255',
+            'subject_id' => 'required|exists:subjects,id|unique:teachers,subject_id',
+            'email'   => 'nullable|string|max:255',
+            'address' => 'nullable|string|max:255',
+            'phone'   => 'required|string|max:20',
         ]);
 
-        // 1️⃣ Buat subject dulu
-        $subject = Subject::create([
-            'name' => $request->subject_name,
-            'description' => $request->subject_description ?? 'Belum ada deskripsi',
+        Teacher::create($validated);
+
+        return redirect()->route('admin.teacher.index')
+            ->with('success', 'Teacher berhasil ditambahkan!');
+    }
+
+    public function edit($id)
+    {
+        $teacher = Teacher::findOrFail($id);
+
+        return view('admin.teacher.edit', [
+            'title' => 'Edit Teacher',
+            'teacher' => $teacher
         ]);
+    }
 
-        // 2️⃣ Buat teacher dan isi subject_id dari subject yang baru dibuat
-        $teacher = Teacher::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'address' => $request->address,
-            'subject_id' => $subject->id,
-        ]);
+    public function update(Request $request, $id)
+    {
+        $teacher = Teacher::findOrFail($id);
 
-        // ✅ Tidak perlu buat Subject kedua atau pakai save()
-        // Relasi sudah otomatis terhubung lewat subject_id
+       $validated = $request->validate([
+    'name'       => 'required|string|max:255',
+    'subject_id' => 'required|exists:subjects,id|unique:teachers,subject_id,' . $teacher->id,
+    'phone'      => 'required|string|max:20',
+    'address'    => 'nullable|string|max:255',
+]);
 
-        return redirect()->back()->with('success', 'Teacher dan Subject berhasil ditambahkan!');
+
+        $teacher->update($validated);
+
+        return redirect()->route('admin.teacher.index')
+            ->with('success', 'Teacher berhasil diupdate!');
+    }
+
+    public function destroy($id)
+    {
+        $teacher = Teacher::findOrFail($id);
+        $teacher->delete();
+
+        return redirect()->route('admin.teacher.index')
+            ->with('success', 'Teacher berhasil dihapus!');
     }
 }

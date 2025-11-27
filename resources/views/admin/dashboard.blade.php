@@ -18,19 +18,7 @@
                 </div>
                 <div class="ml-4">
                     <h2 class="text-lg font-semibold text-gray-700 dark:text-gray-200">Students</h2>
-                    <p class="text-2xl font-bold text-gray-900 dark:text-white">20</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="bg-white dark:bg-gray-800 shadow rounded-xl p-5 border border-gray-100 dark:border-gray-700">
-            <div class="flex items-center">
-                <div class="p-3 bg-green-100 text-green-600 rounded-lg">
-                    <i class="fa-solid fa-chalkboard-teacher text-xl"></i>
-                </div>
-                <div class="ml-4">
-                    <h2 class="text-lg font-semibold text-gray-700 dark:text-gray-200">Teachers</h2>
-                    <p class="text-2xl font-bold text-gray-900 dark:text-white">12</p>
+                    <p class="text-2xl font-bold text-gray-900 dark:text-white">40</p>
                 </div>
             </div>
         </div>
@@ -54,9 +42,34 @@
                 </div>
                 <div class="ml-4">
                     <h2 class="text-lg font-semibold text-gray-700 dark:text-gray-200">Subjects</h2>
+                    <p class="text-2xl font-bold text-gray-900 dark:text-white">5</p>
+                </div>
+            </div>
+        </div>
+
+         <div class="bg-white dark:bg-gray-800 shadow rounded-xl p-5 border border-gray-100 dark:border-gray-700">
+            <div class="flex items-center">
+                <div class="p-3 bg-red-100 text-red-600 rounded-lg">
+                    <i class="fa-solid fa-school text-xl"></i>
+                </div>
+                <div class="ml-4">
+                    <h2 class="text-lg font-semibold text-gray-700 dark:text-gray-200">Guardian</h2>
                     <p class="text-2xl font-bold text-gray-900 dark:text-white">10</p>
                 </div>
             </div>
         </div>
+
+        <div class="bg-white dark:bg-gray-800 shadow rounded-xl p-5 border border-gray-100 dark:border-gray-700">
+            <div class="flex items-center">
+                <div class="p-3 bg-red-100 text-gray-600 rounded-lg">
+                    <i class="fa-solid fa-school text-xl"></i>
+                </div>
+                <div class="ml-4">
+                    <h2 class="text-lg font-semibold text-gray-700 dark:text-gray-200">Teacher</h2>
+                    <p class="text-2xl font-bold text-gray-900 dark:text-white">5</p>
+                </div>
+            </div>
+        </div>
+
     </div>
 </x-admin.layout>
