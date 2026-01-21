@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\AdminGuardianController;
 use App\Http\Controllers\Admin\AdminTeacherController;
 use App\Http\Controllers\Admin\AdminClassroomController;
 use App\Http\Controllers\Admin\AdminSubjectController;
+use App\Http\Controllers\AuthController;
 
 
 // =====================
@@ -30,7 +31,9 @@ Route::get('/guardian', [GuardianController::class, 'index'])->name('guardian');
 Route::get('/classroom', [ClassroomController::class, 'index'])->name('classroom');
 Route::get('/teacher', [TeacherController::class, 'index'])->name('teacher');
 Route::get('/subject', [SubjectController::class, 'index'])->name('subject');
-
+ Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+    Route::post('/login', [AuthController::class, 'login'])->name('login.post');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // =====================
 // RUTE ADMIN PANEL

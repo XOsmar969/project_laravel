@@ -10,6 +10,8 @@ use App\Models\Teacher;
 use App\Models\Subject;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
+
 
 class DatabaseSeeder extends Seeder
 {
@@ -23,12 +25,18 @@ class DatabaseSeeder extends Seeder
           User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
+            'password' => 'password',
         ]); 
         
         Guardian::factory(10)->create();
         Classroom::factory(4)->hasStudents(10)->create();
         Subject::factory(5)->hasTeachers(1)->create();
 
-      
+        User::factory()->create([
+            'name' => 'Admin',
+            'email' => 'admin@gmail.com',
+            'password' => 'admin123',
+        ]);
+
     }
 }

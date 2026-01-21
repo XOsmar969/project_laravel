@@ -12,17 +12,29 @@ class AdminStudentController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        $students = Student::paginate(10);
-        $classrooms = Classroom::all();
+   public function index(Request $request)
+{
+    $search = $request->search;
 
-        return view('admin.student.index',[
-            'title' => 'Students',
-            'students' => $students,
-            'classrooms' => $classrooms,
-        ]);
-    }
+    $students = Student::with('classroom')
+        ->when($search, function ($query) use ($search) {
+            $query->where('name', 'like', "%{$search}%")
+                  ->orWhere('email', 'like', "%{$search}%")
+                  ->orWhereHas('classroom', function ($q) use ($search) {
+                      $q->where('name', 'like', "%{$search}%");
+                  });
+        })
+        ->paginate(10)
+        ->withQueryString();
+
+    $classrooms = Classroom::all();
+
+    return view('admin.student.index', [
+        'title' => 'Students',
+        'students' => $students,
+        'classrooms' => $classrooms,
+    ]);
+}
 
     /**
      * Show the form for creating a new resource.

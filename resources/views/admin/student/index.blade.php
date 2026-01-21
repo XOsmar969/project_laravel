@@ -4,14 +4,40 @@
 
      
 
-        <section class="bg-white dark:bg-white-800 shadow-md sm:rounded-lg p-4">
+        <section class="bg-gray-50 dark:bg-gray-800 shadow-md sm:rounded-lg p-4">
+
             <div x-data="{ openAddModal: false }">
-            <h1 class="text-xl font-bold mb-4">Data Student</h1>
+            <h1 class="text-xl font-bold mb-4 text-white">
+    Data Student
+</h1>
+
                 <x-admin.menu-table
                     button-label="Add Student"
                     on-click="openAddModal = true"
                 />
+{{-- Search --}}
+<form method="GET" action="{{ route('admin.students.index') }}" class="flex items-center gap-2 mt-4 mb-4">
+    <input
+        type="text"
+        name="search"
+        value="{{ request('search') }}"
+        placeholder="Search name, email, class..."
+        class="w-full md:w-1/3 px-4 py-2 border rounded-lg focus:ring focus:ring-blue-300"
+    >
 
+    <button
+        type="submit"
+        class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+        Search
+    </button>
+
+    @if(request('search'))
+        <a href="{{ route('admin.students.index') }}"
+           class="px-4 py-2 bg-gray-300 rounded-lg hover:bg-gray-400">
+            Reset
+        </a>
+    @endif
+</form>
                 {{-- Modal Add --}}
                 <div x-show="openAddModal"
                     x-transition
